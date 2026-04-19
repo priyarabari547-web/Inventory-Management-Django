@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h2>Record New Sale</h2>
+<div class="form-box">
+    {% if form.non_field_errors %}
+    <div class="alert-danger">
+        {{ form.non_field_errors }}
+    </div>
+    {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <label>Select Product</label>
+                {{ form.product }}
+            </div>
+            <div class="form-row">
+                <label>Quantity Sold</label>
+                {{ form.quantity_sold }}
+            </div>
+            <button type="submit" class="btn btn-save" style="background: #f39c12;">Submit Sale</button>
+        </form>
+        <a href="/products/" class="btn-back">Back to List</a>
+    </div>
+</div>
+{% endblock %}

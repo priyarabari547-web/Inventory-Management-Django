@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Inventory Dashboard</h2>
+
+<div class="dashboard">
+    <div class="card blue">
+        <p>Total Products</p>
+        <h3>{{ total_products }}</h3>
+    </div>
+    <div class="card green">
+        <p>Total Sales</p>
+        <h3>{{ total_sales }}</h3>
+    </div>
+    <div class="card orange">
+        <p>Low Stock Items</p>
+        <h3>{{ low_stock }}</h3>
+    </div>
+    <div class="card red">
+        <p>High Demand Items</p>
+        <h3>{{ high_demand }}</h3>
+    </div>
+</div>
+
+<h3>Sales Performance Summary</h3>
+<table>
+    <tr>
+        <th>Product Name</th>
+        <th>Total Units Sold</th>
+    </tr>
+    {% for name, total in sales_summary %}
+    <tr>
+        <td>{{ name }}</td>
+        <td>{{ total }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="2">No sales recorded yet.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

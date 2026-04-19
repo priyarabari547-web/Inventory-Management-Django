@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Stock Adjustment</h2>
+
+    <div class="form-box">
+        {% if form.non_field_errors %}
+        <div class="alert-danger">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-row">
+                <label>Select Product</label>
+                {{ form.product }}
+            </div>
+
+            <div class="form-row">
+                <label>Quantity Change (+ for adding, - for removing)</label>
+                {{ form.quantity_changed }}
+            </div>
+
+            <div class="form-row">
+                <label>Reason for Adjustment</label>
+                {{ form.reason }}
+            </div>
+
+            <button type="submit" class="btn btn-save" style="background: #3498db;">
+                Update Inventory Levels
+            </button>
+        </form>
+
+        <a href="/products/" class="btn-back">Cancel and Back</a>
+    </div>
+</div>
+{% endblock %}

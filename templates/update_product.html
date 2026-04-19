@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Update Product Details</h2>
+
+    <div class="form-box">
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div class="form-row">
+                <label>Product Name</label>
+                {{ form.name }}
+            </div>
+
+            <div class="form-row">
+                <label>Price (₹)</label>
+                {{ form.price }}
+            </div>
+
+            <div class="form-row">
+                <label>Current Quantity</label>
+                {{ form.quantity }}
+            </div>
+
+            <div class="form-row">
+                <label>Minimum Stock Level</label>
+                {{ form.minimum_stock }}
+            </div>
+
+            <button type="submit" class="btn-save">Update Product</button>
+        </form>
+
+        <a href="/products/" class="btn-back">Cancel and Return</a>
+    </div>
+</div>
+{% endblock %}

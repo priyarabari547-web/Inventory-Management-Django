@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h2>Add New Product</h2>
+    <div class="form-box">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <label>Product Name</label>
+                {{ form.name }}
+            </div>
+            <div class="form-row">
+                <label>Price (per unit)</label>
+                {{ form.price }}
+            </div>
+            <div class="form-row">
+                <label>Initial Stock Quantity</label>
+                {{ form.quantity }}
+            </div>
+            <div class="form-row">
+                <label>Minimum Stock Level (for alerts)</label>
+                {{ form.minimum_stock }}
+            </div>
+            <button type="submit" class="btn btn-save">Add Product</button>
+        </form>
+        <a href="/products/" class="btn-back">Cancel and Go Back</a>
+    </div>
+</div>
+{% endblock %}

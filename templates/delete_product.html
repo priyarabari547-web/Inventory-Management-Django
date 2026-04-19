@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Confirm Deletion</h2>
+
+    <div class="form-box" style="border-top: 5px solid #e74c3c;">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <div style="font-size: 50px; color: #e74c3c; margin-bottom: 10px;">⚠️</div>
+            <p style="font-size: 18px; color: #2c3e50;">
+                Are you sure you want to delete <strong>"{{ product.name }}"</strong>?
+            </p>
+            <p style="color: #7f8c8d; font-size: 14px;">
+                This action cannot be undone and will remove all associated sales records.
+            </p>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn-save" style="background: #e74c3c;">
+                Yes, Delete Permanently
+            </button>
+        </form>
+
+        <a href="/products/" class="btn-back">No, Keep Product</a>
+    </div>
+</div>
+{% endblock %}
