@@ -33,7 +33,6 @@ class StockAdjustment(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        # Update stock
         self.product.quantity += self.quantity_changed
 
         if self.product.quantity < 0:
