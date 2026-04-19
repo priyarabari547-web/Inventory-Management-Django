@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models import Sum, Count
 from .models import Product, Sale
 from .forms import ProductForm,SaleForm,StockAdjustmentForm
-from django.contrib.auth.decorators import login_required # Add this
+from django.contrib.auth.decorators import login_required 
 
 @login_required
 def dashboard(request):
@@ -38,7 +38,6 @@ def product_list(request):
     else:
         products = Product.objects.all()
 
-    # Demand logic
     demand_data = Sale.objects.values('product').annotate(total_sold=Sum('quantity_sold'))
     demand_dict = {item['product']: item['total_sold'] for item in demand_data}
 
@@ -52,7 +51,6 @@ def product_list(request):
         else:
             product.demand = "Normal"
 
-        # Restock logic
         if product.quantity <= product.minimum_stock:
             if product.demand == "High":
                 product.restock = "Urgent"
